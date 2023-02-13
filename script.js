@@ -1,8 +1,15 @@
+//Making Questions
+var questions = [
+    {
+        "qu":""
+    }
+]
+
+//Making Variables
 var beginButton = document.querySelector('#begin');
 var quest = document.querySelector("main");
 var timeEl = document.querySelector("#time");
 var secondsLeft = 5;
-
 
 function setTime() {
     var timerInterval = setInterval(function() {
