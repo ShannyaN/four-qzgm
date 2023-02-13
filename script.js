@@ -21,7 +21,7 @@ console.log(questions);
 
 //Making Variables
 var beginButton = document.querySelector('#begin');
-var quest = document.querySelector("h2");
+
 var timeEl = document.querySelector("#time");
 var secondsLeft = 5;
 var done = document.createElement("h2");
@@ -35,39 +35,32 @@ function setTime() {
         sendMessage();
       }
     }, 1000);
-  }
+}
 
   function sendMessage() {
     timeEl.textContent = "You have run out of time."
     quest.appendChild(done);
   }
 
+  var optEl = document.querySelector("#ops")
+  var opa = document.createElement("button");
+  var opb = document.createElement("button");
+  var opc = document.createElement("button");
+  var opd = document.createElement("button");
+
+
+
   beginButton.addEventListener('click', function (event) {
     setTime();
-    var butts = document.querySelector('.buttons');
-    var choiceButtona = document.createElement("button");
-
-    var choiceButtonb = document.createElement('button');
-    for (var i=0;i<questions.length;i++) { 
-        var choices=[];
-        var q = questions[i].qu;
-        quest.textContent = q;
-        var choicea = questions[i].a;
-        choiceButtona.textContent=choicea;
-        var choiceb = questions[i].b;
-        choiceButtonb.textContent=choiceb;
-        var choicec = questions[i].c;
-        choiceButtonc.textContent=choicec;
-        var choiced = questions[i].d;
-        choiceButtond.textContent=choiced;
-    var listEl=document.createElement("ol");
-    var li1=document.createElement("li");
-    listEl.append(li1); 
-    function renderOptions(questions[i])
-        for (var i=0;i<(questions[i]-1).length;i++){
-            var li=document.createElement('li');
-            li.textContent=questions[i[a]];
-            listEl.appendChild(li);
-            
-        }
-})
+    var quest = document.querySelector(".message");
+    quest.textContent=question1.qu; 
+    console.log(question1.a);
+    opa.textContent=question1.a;
+    opb.textContent=question1.b;
+    opc.textContent=question1.c;
+    opd.textContent=question1.d;
+    optEl.appendChild(opa);
+    optEl.appendChild(opb);
+    optEl.appendChild(opc);
+    optEl.appendChild(opd);
+  });
