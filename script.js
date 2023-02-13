@@ -1,4 +1,4 @@
-var timeEl = document.querySelector(".time");
+var timeEl = document.querySelector("#time");
 var mainEl = document.getElementById("main");
 
 var secondsLeft = 75;
@@ -7,8 +7,6 @@ function setTime() {
     var timerInterval = setInterval(function() {
         timeEl.textContent = "Time: " + secondsLeft;
         secondsLeft--;
-     
-  
       if(secondsLeft === 0) {
         // Stops execution of action at set interval
         clearInterval(timerInterval);

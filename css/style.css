@@ -1,0 +1,36 @@
+:root{
+    --accent: rgba(132, 179, 46, 0.768);
+    --main: black;
+}
+* {
+    max-width: 100%;
+}
+header {
+    margin: 0;
+    padding:0;
+    display: flexbox;
+    background-color: var(--accent);
+    color: var(--main);
+    line-height: 1.5rem;
+    border: var(--main) 5px solid;
+}
+h1 {
+    font-size: 3rem;
+    font-weight: bolder;
+    text-align: center;
+}
+nav {
+    display: inline-flex;
+    text-align: space-between;
+}
+#HS {
+    position: absolute;
+}
+#time {
+    text-align: right;
+}
+main {
+    color: var(--accent);
+    overflow: hidden;
+    background-color: var(--main);
+}
