@@ -112,10 +112,10 @@ function firstQuestDisp () {
     opd.textContent=questions[0].d;
     for (var i=0; i<arr.length;i++){
       optEl.appendChild(arr[i])}
-    check();
+    //check();
     }
 
-var con=document.querySelector(".buttons")
+/*var con=document.querySelector(".buttons")
 var res = document.createElement("h2");
 con.addEventListener("click", check)
 function check(event) {
@@ -138,7 +138,7 @@ function check(event) {
 var els;
 els = [quest, opa, opb, opc, opd];
 var targ = document.querySelector(".options");
-console.log("targ :" + targ);
+console.log("targ :" + targ);*/
 var q=1;
 function next(){
   while (q<questions.length-1)
@@ -148,7 +148,7 @@ function next(){
       opb.textContent=questions[q].b;
       opc.textContent= questions[q].c;
       opd.textContent=questions[q].d; 
-      check();
+      //check();
       q++;
   })};
 

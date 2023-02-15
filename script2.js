@@ -90,14 +90,16 @@ var i = 0;
 var quest = document.querySelector(".message");
 //console.log(targ)
 //var arr = [opa,opb,opc,opd];
-var aButton = document.querySelector('#optionA');
-var bButton = document.querySelector('#optionB');
-var cButton = document.querySelector('#optionC');
-var dButton = document.querySelector('#optionD');
+var opa = document.querySelector('#optionA');
+var opb = document.querySelector('#optionB');
+var opc = document.querySelector('#optionC');
+var opd = document.querySelector('#optionD');
+opa.textContent= questions[0].a;
+aButton.setAttribute("visibiliy","visible")
 function dispQ () {
 while (i<questions.length) {
     quest.textContent=questions[i].qu;
-    opa.textContent= questions[i].a;
+    aButton.textContent= questions[0].a;
     opb.textContent=questions[i].b;
     opc.textContent= questions[i].c;
     opd.textContent=questions[i].d;
@@ -110,11 +112,11 @@ while (i<questions.length) {
     })
     i++}};
 
-aButton.addEventListener('click', check());
+/*aButton.addEventListener('click', check());
 bButton.addEventListener('click', check());
 cButton.addEventListener('click', check());
 dButton.addEventListener('click', check());
-
+*/
 
     /*if (opa.clicked==true){
     //document.getElementsByClassName("options").onclick=function(){
