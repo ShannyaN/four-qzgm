@@ -81,17 +81,21 @@ function timeDown() {
 var optEl = document.querySelector("#ops")
 var opa = document.createElement("button");
 opa.setAttribute("id","optionA");
+opa.setAttribute("class","options");
 //opa.setAttribute("onClick","check()");
 var opb = document.createElement("button");
 opb.setAttribute("id","optionB");
+opb.setAttribute("class","options");
 //opb.setAttribute("onClick","check()");
 var opc = document.createElement("button");
 opc.setAttribute("id","optionC");
+opc.setAttribute("class","options");
 //opc.setAttribute("onClick","check()");
 var opd = document.createElement("button");
 opd.setAttribute("id","optionD");
+opd.setAttribute("class","options");
 //opd.setAttribute("onClick","check()");
-
+//console.log(.options)
 beginButton.addEventListener('click', function () {
   setTime();
   firstQuestDisp();
@@ -133,7 +137,8 @@ function check(event) {
   next();
 var els;
 els = [quest, opa, opb, opc, opd];
-var targ = document.querySelector("button")
+var targ = document.querySelector(".options");
+console.log("targ :" + targ);
 var q=1;
 function next(){
   while (q<questions.length-1)
@@ -143,10 +148,9 @@ function next(){
       opb.textContent=questions[q].b;
       opc.textContent= questions[q].c;
       opd.textContent=questions[q].d; 
-      check('click')
+      check();
       q++;
-      next();}
-  )};
+  })};
 
  // beginButton.addEventListener('click', function () {
 /*function changeQ(){
