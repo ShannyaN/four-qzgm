@@ -77,7 +77,7 @@ function dispQ () {
         dButton.textContent=questions[i].d;
 }
 
-
+var con=document.querySelector(".options");
 console.log(con);
 console.log(con.children);
 console.log(con.childNodes);
