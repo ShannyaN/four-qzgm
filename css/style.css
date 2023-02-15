@@ -72,5 +72,12 @@ button:hover {
  ul {
     list-style-type:lower-alpha;
  }
+.options {
+   display:none;
+ }
+.options:onclick {
+    color : white;
+    display:block;
+}
 
  

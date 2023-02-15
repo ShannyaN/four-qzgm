@@ -112,7 +112,7 @@ function firstQuestDisp () {
     opd.textContent=questions[0].d;
     for (var i=0; i<arr.length;i++){
       optEl.appendChild(arr[i])}
-    //check();
+    check();
     }
 
 /*var con=document.querySelector(".buttons")
