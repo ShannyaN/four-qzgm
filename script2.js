@@ -6,10 +6,9 @@ beginButton.addEventListener('click', function () {
     //firstQuestDisp();
     console.log("BB done")
   });
-
+var secondsLeft = 3;
 function setTime() {
     var timeEl = document.querySelector("#time");
-    var secondsLeft = 3;
     var doneEl = document.createElement("h2");
     var timerInterval = setInterval(function() {
         timeEl.textContent = "Time: " + secondsLeft;
@@ -21,7 +20,6 @@ function setTime() {
         }
     }, 1000);
 }
-
 //Questions
 var questions =[
 question1= {
@@ -58,37 +56,44 @@ question4= {
 }]
 //var props = 'abcdx'
 console.log(questions);
-console.log(questions[1].a);
+//console.log(questions[1].a);
 
 //Add elements to display the questions
 var optEl = document.querySelector(".ops")
 var arr = ["opa","opb","opc","opd"];
 //var arry = ["optionA","optionB","optionC","optionD"];
 console.log(arr);
-buttonEl = document.createElement("button");
+//buttonEl = document.createElement("button");
 var opa = document.createElement("button");
 opa.setAttribute("id","optionA");
 opa.setAttribute("class","options");
 opa.setAttribute("type","submit");
+//opa.setAttribute("onclick","check()");
 var opb = document.createElement("button");
 opb.setAttribute("id","optionB");
 opb.setAttribute("class","options");
 opb.setAttribute("type","submit");
+//opb.setAttribute("onclick","check()");
 var opc = document.createElement("button");
 opc.setAttribute("id","optionC");
 opc.setAttribute("class","options");
 opc.setAttribute("type","submit");
+//opc.setAttribute("onclick","check()");
 var opd = document.createElement("button");
 opd.setAttribute("id","optionD");
 opd.setAttribute("class","options");
-opa.setAttribute("type","submit");
+opd.setAttribute("type","submit");
+//opd.setAttribute("onclick","check()");
 
 //Function to display the questions
 var i = 0;
 var quest = document.querySelector(".message");
-var targ = document.querySelector(".options");
 //console.log(targ)
 //var arr = [opa,opb,opc,opd];
+var aButton = document.querySelector('#optionA');
+var bButton = document.querySelector('#optionB');
+var cButton = document.querySelector('#optionC');
+var dButton = document.querySelector('#optionD');
 function dispQ () {
 while (i<questions.length) {
     quest.textContent=questions[i].qu;
@@ -100,7 +105,19 @@ while (i<questions.length) {
     optEl.appendChild(opb);
     optEl.appendChild(opc);
     optEl.appendChild(opd);
-    if (document.getElementsByClassName('')){
-        i++;
-    }
-}}
+    aButton.addEventListener('click', function () {
+        console.log("optionA");
+    })
+    i++}};
+
+aButton.addEventListener('click', check());
+bButton.addEventListener('click', check());
+cButton.addEventListener('click', check());
+dButton.addEventListener('click', check());
+
+
+    /*if (opa.clicked==true){
+    //document.getElementsByClassName("options").onclick=function(){
+      //  i++;
+      console.log("it worked")
+       // console.log(i);*/
