@@ -17,7 +17,7 @@ function show() {
     console.log("showed");
 }
 
-var secondsLeft;
+var s;
 function setTime(secondsLeft) {
     var timeEl = document.querySelector("#time");
     var doneEl = document.createElement("h2");
@@ -28,7 +28,9 @@ function setTime(secondsLeft) {
         clearInterval(timerInterval);
         timeEl.textContent = "You have run out of time."
         //terminateGame();
+        s = secondsLeft;
         }
+        
     }, 1000);
 }
 //Questions;
@@ -115,10 +117,11 @@ function check(xx) {
         console.log("wrong");}
         timeDown(); 
         dispQ(xx);
+        return 1;
 }
 
 function timeDown(){
-    secondsLeft=secondsLeft-5;
-    setTime(secondsLeft);
+    s=s-5;
+    setTime(s);
 
 }
