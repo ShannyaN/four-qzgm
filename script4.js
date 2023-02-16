@@ -2,12 +2,12 @@
 var beginButton = document.querySelector('#begin');
 beginButton.addEventListener('click', function () {
     show();
-    setTime();
-    dispQ();
+    setTime(25);
+    dispQ(-1);
     console.log("BB done")
   });
 
-  //Makes Begin button disappear and option buttons appear
+//Makes Begin button disappear and option buttons appear
 function show() {
     beginButton.style.display = "none";
     aButton.classList.remove("hide");
@@ -17,8 +17,8 @@ function show() {
     console.log("showed");
 }
 
-var secondsLeft = 3;
-function setTime() {
+var secondsLeft;
+function setTime(secondsLeft) {
     var timeEl = document.querySelector("#time");
     var doneEl = document.createElement("h2");
     var timerInterval = setInterval(function() {
@@ -33,44 +33,40 @@ function setTime() {
 }
 //Questions;
 var question1= {
-    "qu":"What color is the sky?",
-    "a":"red",
-    "b":"green",
-    "c":"blue",
-    "d":"purple",
-    "x":"blue"
+    "qu":"If a data type is true or false, what kind of value is it?",
+    "a":"array",
+    "b":"string",
+    "c":"Boolean",
+    "d":"liar",
+    "x":"Boolean"
 }
 var question2= {
-    "qu":"what is the best show?",
-    "a":"TWD",
-    "b":"AHS",
-    "c":"peaky blinders",
-    "d":"The Last of Us",
-    "x":"TWD"
+    "qu":"What is the the value of the first index in an array?",
+    "a":"1",
+    "b":"first",
+    "c":"origin",
+    "d":"0",
+    "x":"0"
 }
 var question3= {
-  "qu":"what is feet?",
-  "a":"four",
-  "b":"seven",
-  "c":"what",
-  "d":"rest",
-  "x":"rest"
+  "qu":"What kind of file is primarily used for styling html files?",
+  "a":"CSS",
+  "b":"HTML",
+  "c":"JavaScript",
+  "d":"JQuery",
+  "x":"CSS"
 }
 var question4= {
-  "qu":"what is red?",
-  "a":"heart",
-  "b":"blood",
-  "c":"cars",
-  "d":"water",
-  "x":"water"
+  "qu":"If a variable value changes, it is considered _________.",
+  "a":"static",
+  "b":"dynamic",
+  "c":"stationary",
+  "d":"moving",
+  "x":"dynamic"
 }
 var questions = [question1, question2, question3, question4]
 console.log(questions);
-corr = [];
-for (var v = 0; v<questions.length;v++){
-    corr.push(questions[v].x)
-}
-console.log(corr);
+
 //Function to display the questions
 var quest = document.querySelector(".message");
 var aButton = document.querySelector('#optionA');
@@ -79,24 +75,25 @@ var cButton = document.querySelector('#optionC');
 var dButton = document.querySelector('#optionD');
 
 //Inputs dynamic content
-var i = 0;
-
-function dispQ () {
- //while (i<questions.length) {
-        quest.textContent=questions[1].qu;
-        aButton.textContent= questions[1].a;
-        bButton.textContent=questions[1].b;
-        cButton.textContent= questions[1].c;
-        dButton.textContent=questions[1].d;
-        //i = i+1;
-        next();
-}
-function next(){
+function dispQ (i) {
+    i++;
+    console.log(questions[i])
+    if (i<questions.length) {
+        quest.textContent=questions[i]['qu'];
+        aButton.textContent=questions[i]['a'];
+        bButton.textContent=questions[i]['b']
+        cButton.textContent= questions[i]['c']
+        dButton.textContent=questions[i]['d']
+        press(i)}}
+    /*else {
+        endGame();
+    }*/
+function press(ind){
     var allButtons = document.getElementsByClassName("options");
     console.log(allButtons);
     for (var el=0;el<allButtons.length;el++){
         allButtons[el].addEventListener('click',function(){
-            check();
+            check(ind);
         },false);
     }
 }
@@ -104,18 +101,24 @@ function next(){
 //Checks if what was clicked is correct
 var con=document.querySelector(".options");
 var res = document.querySelector("#result");
-function check() {
-   // var loci= i;
+function check(xx) {
     var ansId = event.target.id;
     var ansTxt = document.getElementById(ansId).textContent;
- /*   console.log(corr[1]);
-    console.log(ansTxt);*/
+    console.log(questions[xx]["qu"]);
+    console.log("ansTxt:" + ansTxt);
     res.textContent = " ";
-    if (ansTxt==corr[1]) {
+    if (ansTxt==questions[xx]["x"]) {
         res.textContent = "Correct!";
         console.log("right");
     } else {
         res.textContent = "Wrong!";
         console.log("wrong");}
-        //timeDown(); 
+        timeDown(); 
+        dispQ(xx);
+}
+
+function timeDown(){
+    secondsLeft=secondsLeft-5;
+    setTime(secondsLeft);
+
 }
