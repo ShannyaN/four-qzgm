@@ -2,7 +2,7 @@
 var beginButton = document.querySelector('#begin');
 beginButton.addEventListener('click', function () {
     show();
-    setTime(25);
+    setTime();
     dispQ(-1);
     console.log("BB done")
   });
@@ -17,8 +17,8 @@ function show() {
     console.log("showed");
 }
 
-var s;
-function setTime(secondsLeft) {
+var secondsLeft = 25;
+function setTime() {
     var timeEl = document.querySelector("#time");
     var doneEl = document.createElement("h2");
     var timerInterval = setInterval(function() {
@@ -28,7 +28,6 @@ function setTime(secondsLeft) {
         clearInterval(timerInterval);
         timeEl.textContent = "You have run out of time."
         //terminateGame();
-        s = secondsLeft;
         }
         
     }, 1000);
@@ -121,7 +120,7 @@ function check(xx) {
 }
 
 function timeDown(){
-    s=s-5;
-    setTime(s);
+    secondsLeft = secondsLeft - 5;
+    setTime();
 
 }
