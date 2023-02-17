@@ -1,5 +1,5 @@
 //When Begin is Presses- timer starts & first question appears
-var beginButton = document.querySelector('#begin');
+var beginButton = document.querySelector('.begin');
 beginButton.addEventListener('click', function () {
     show();
     setTime();
@@ -17,18 +17,17 @@ function show() {
     console.log("showed");
 }
 
-var secondsLeft = 25;
+var secondsLeft =1000;
+var timeEl = document.querySelector("#time");
 function setTime() {
-    var timeEl = document.querySelector("#time");
     var doneEl = document.createElement("h2");
     var timerInterval = setInterval(function() {
         timeEl.textContent = "Time: " + secondsLeft;
         secondsLeft--;
         if(secondsLeft <= 0) {
         clearInterval(timerInterval);
-        timeEl.textContent = "You have run out of time."
-        //terminateGame();
-        }
+        timeEl.textContent = "You have run out of time.";
+        endGame()}
         
     }, 1000);
 }
@@ -58,14 +57,23 @@ var question3= {
   "x":"CSS"
 }
 var question4= {
-  "qu":"If a variable value changes, it is considered _________.",
+  "qu":"If a variable value changes, it is considered...",
   "a":"static",
   "b":"dynamic",
   "c":"stationary",
   "d":"moving",
   "x":"dynamic"
 }
-var questions = [question1, question2, question3, question4]
+var question5= {
+    "qu":"When uploading changes to GitHud, what git command should be done last?",
+    "a":"add changes",
+    "b":"pull",
+    "c":"commit",
+    "d":"push",
+    "x":"push"
+  }
+
+var questions = [question1, question2, question3, question4, question5]
 console.log(questions);
 
 //Function to display the questions
@@ -79,18 +87,18 @@ var dButton = document.querySelector('#optionD');
 function dispQ (i) {
     i++;
     console.log(questions[i])
-    if (i<questions.length) {
+    if (i<questions.length-1) {
         quest.textContent=questions[i]['qu'];
         aButton.textContent=questions[i]['a'];
         bButton.textContent=questions[i]['b']
         cButton.textContent= questions[i]['c']
         dButton.textContent=questions[i]['d']
-        press(i)}}
-    /*else {
+        press(i)}
+    else {
         endGame();
-    }*/
-function press(ind){
+    }};
     var allButtons = document.getElementsByClassName("options");
+function press(ind){
     console.log(allButtons);
     for (var el=0;el<allButtons.length;el++){
         allButtons[el].addEventListener('click',function(){
@@ -113,14 +121,31 @@ function check(xx) {
         console.log("right");
     } else {
         res.textContent = "Wrong!";
-        console.log("wrong");}
-        timeDown(); 
+        console.log("wrong");
+        timeDown() }
         dispQ(xx);
-        return 1;
-}
+    }
+
+
+
+var congrats ;
+function endGame(){
+    var butts = [aButton, bButton, cButton,dButton]
+    for (y =0; y<butts.length;y++){
+        butts[y].style = "display:none";
+    res.textContent = " ";
+    beginButton.classList.remove("begin");
+    beginButton.textContent="Log your score"
+    beginButton.style.display ="inline";
+    if (secondsLeft<=0){
+        quest.textContent="GAME OVER."
+        score = 0;
+    } else {
+    score = secondsLeft;
+    congrats = "Congratulations! You completed the quiz! You scored " + score + " points."
+    quest.textContent = congrats;
+    }}}
 
 function timeDown(){
-    secondsLeft = secondsLeft - 5;
-    setTime();
-
-}
+    timeEl.prepend("-5    ");
+    secondsLeft-=5;}
