@@ -127,14 +127,15 @@ function check(xx) {
     } else {
         res.textContent = "Wrong!";
         console.log("wrong");
-        timeDown() }
+        secondsLeft-=5 
+        timeEl.prepend("-5    ")}
         dispQ(xx);
     }
 
 //Knocks timer down by 5s when answered wrong
-function timeDown(){
+/*function timeDown(){
     timeEl.prepend("-5    ");
-    secondsLeft-=5;}
+    secondsLeft-=5;}*/
 
 //End page
 var congrats ;
@@ -147,6 +148,7 @@ function endGame(){
     beginButton.classList.add("log");
     var logButton = document.querySelector('.log');
     logButton.textContent="Log your score"
+    nmin = document.createElement("input")
     logButton.style.display ="inline";}
     logButton.addEventListener('click', function () {
         window.location.replace("scorepg/scores.html")})
@@ -157,6 +159,7 @@ function endGame(){
     score = secondsLeft;
     timeEl.textContent=" ";
     quest.textContent = "Congratulations! You completed the quiz! You scored " + score + " points. Enter your initials and log your score!";
-    }}
+    localStorage.setItem(nm, score);
+}}
     //inp
     //localStorage.setItem(inp, secondsLeft
