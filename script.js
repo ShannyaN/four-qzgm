@@ -66,7 +66,7 @@ var question4= {
   "x":"dynamic"
 }
 var question5= {
-    "qu":"When uploading changes to GitHud, what git command should be done last?",
+    "qu":"5/5 When uploading changes to GitHub, what git command should be done last?",
     "a":"add changes",
     "b":"pull",
     "c":"commit",
@@ -87,8 +87,7 @@ var dButton = document.querySelector('#optionD');
 //Inputs dynamic content
 function dispQ (i) {
     i++;
-    ch=0;
-    console.log(questions[i])
+    console.log(questions.length-1)
     if (i<questions.length) {
         quest.textContent=questions[i]['qu'];
         aButton.textContent=questions[i]['a'];
@@ -96,70 +95,64 @@ function dispQ (i) {
         cButton.textContent= questions[i]['c']
         dButton.textContent=questions[i]['d']
         press(i)}
-    else {
-        endGame();
-    }};
-    var allButtons = document.getElementsByClassName("options");
-
+    else {endGame()}}
+   
 //Click trigger
+var allButtons = document.getElementsByClassName("options");
 function press(ind){
-    console.log(allButtons);
     for (var el=0;el<allButtons.length;el++){
         allButtons[el].addEventListener('click',function(){
-            check(ind);
-        },false);
-    }
+            var chos = this.id;
+            console.log(chos);
+            check(ind,chos);
+        },true); }
 }
-
 
 //Checks if what was clicked is correct
 var con=document.querySelector(".options");
 var res = document.querySelector("#result");
-function check(xx) {
-    var ansId = event.target.id;
-    var ansTxt = document.getElementById(ansId).textContent;
+function check(xx,chosen) {
+    var ansTxt = document.getElementById(chosen).textContent;
     console.log(questions[xx]["qu"]);
     console.log("ansTxt:" + ansTxt);
     res.textContent = " ";
-    if (ansTxt==questions[xx]["x"]) {
-        res.textContent = "Correct!";
-        console.log("right");
-    } else {
+    if (ansTxt!==questions[xx]["x"]) {
         res.textContent = "Wrong!";
         console.log("wrong");
-        secondsLeft-=5 
-        timeEl.prepend("-5    ")}
+        timeDown();
+    } else {
+        res.textContent = "Correct!";
+        console.log("right")}
         dispQ(xx);
     }
 
 //Knocks timer down by 5s when answered wrong
-/*function timeDown(){
-    timeEl.prepend("-5    ");
-    secondsLeft-=5;}*/
+function timeDown(){
+    secondsLeft-=2;}
 
 //End page
-var congrats ;
+var subEnd = document.querySelector('#go');
 function endGame(){
+    var intIn = document.querySelector("#initNm")
     var butts = [aButton, bButton, cButton,dButton]
     for (y =0; y<butts.length;y++){
-        butts[y].style = "display:none";
+        butts[y].style = "display:none";}
     res.textContent = " ";
-    beginButton.classList.remove("begin");
-    beginButton.classList.add("log");
-    var logButton = document.querySelector('.log');
-    logButton.textContent="Log your score"
-    nmin = document.createElement("input")
-    logButton.style.display ="inline";}
-    logButton.addEventListener('click', function () {
-        window.location.replace("scorepg/scores.html")})
+    subEnd.classList.remove("subbut");
+    intIn.classList.remove("subbut")
     if (secondsLeft<=0){
         quest.textContent="GAME OVER. Enter your initials and log your score."
         score = 0;
     } else {
     score = secondsLeft;
     timeEl.textContent=" ";
-    quest.textContent = "Congratulations! You completed the quiz! You scored " + score + " points. Enter your initials and log your score!";
-    localStorage.setItem(nm, score);
-}}
-    //inp
-    //localStorage.setItem(inp, secondsLeft
+    quest.textContent = "Congratulations! You completed the quiz! You scored " + score + " points. Enter your initials and log your score!";}
+    
+    subEnd.addEventListener('click', function () {
+        window.location.replace("scorepg/scores.html")
+    mvp = JSON.parse(window.localStorage.getItem('highScore'))||0
+    var currentScore = {
+        initials: initNm.value,
+        highscore: score}
+if (currentScore.highscore>mvp.highscore){
+    window.localStorage.setItem("highScore", JSON.stringify(currentScore))}})}

@@ -76,5 +76,16 @@ button:hover {
 .hide {
    display:none !important;
  }
+ input {
+    line-height: 3rem;
+ }
+ .subbut {
+ display:none}
  
- 
+ .row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 50%;
+  }
