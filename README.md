@@ -11,25 +11,18 @@ A quiz game with the capability to countdown once triggered by pressing the "Beg
 ![End of quiz with input field to record score](images/endofQuiz.png)
 ![Score Log](images/highscorepg.png)
 
-
-
-### View from a desktop:
-![Page when site is first loaded.](images/loadpg.png)
-![Middle of site on desktop](images/midquest.png)
-![End of site on desktop with view of responsive hover transformation.](./assets/images/desktop3.png)
-
 ## Installation
 Extra equipment is not needed to view this project.
 
 ## Usage
-This site provides a much more organized manner to present a developer's word to those looking to hire them for services or as an employee.
+This site provides a game with automated correcting, timing, and score logging to record progrress.
 
 ## Roadmap
-I would add JavaScript to the site when learned to make it more interactive and possibly log inquiries.
+I would add more quesions and a shuffle component so the questions could appear at random.
 
 ## Project status
-In progress.
+Complete.
 
 ## Links
-Deployed Site: https://shannyan.github.io/two-port/
-Repo: https://github.com/ShannyaN/two-port
+Deployed Site: https://shannyan.github.io/four-qzgm/
+Repo: https://github.com/ShannyaN/four-qzgm
