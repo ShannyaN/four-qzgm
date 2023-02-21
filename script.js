@@ -107,7 +107,7 @@ function press(ind){
             check(ind,chos);
         },true); }
 }
-
+var k;
 //Checks if what was clicked is correct
 var con=document.querySelector(".options");
 var res = document.querySelector("#result");
@@ -116,10 +116,12 @@ function check(xx,chosen) {
     console.log(questions[xx]["qu"]);
     console.log("ansTxt:" + ansTxt);
     res.textContent = " ";
+    k=0;
     if (ansTxt!==questions[xx]["x"]) {
         res.textContent = "Wrong!";
+        timeEl.prepend(-3   );
         console.log("wrong");
-        timeDown();
+        if (k==0){timeDown()};
     } else {
         res.textContent = "Correct!";
         console.log("right")}
@@ -128,11 +130,14 @@ function check(xx,chosen) {
 
 //Knocks timer down by 5s when answered wrong
 function timeDown(){
-    secondsLeft-=2;}
-
+    secondsLeft-=5;
+    k=1;}
+var a;
 //End page
 var subEnd = document.querySelector('#go');
 function endGame(){
+    a=localStorage.getItem('aval')||0;
+    a++;
     var intIn = document.querySelector("#initNm")
     var butts = [aButton, bButton, cButton,dButton]
     for (y =0; y<butts.length;y++){
@@ -154,5 +159,8 @@ function endGame(){
     var currentScore = {
         initials: initNm.value,
         highscore: score}
+        window.localStorage.setItem("aval", a)
+        window.localStorage.setItem("score"+ a, JSON.stringify(currentScore))
 if (currentScore.highscore>mvp.highscore){
-    window.localStorage.setItem("highScore", JSON.stringify(currentScore))}})}
+    window.localStorage.setItem("highScore", JSON.stringify(currentScore))}
+})}

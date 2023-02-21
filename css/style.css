@@ -88,4 +88,25 @@ button:hover {
   
   .column {
     flex: 50%;
+    border: 3.5px black solid;
   }
+#log h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 5%;
+}
+#log  {
+    font-size: 2rem;
+    font-weight: italic;
+    margin: 7% ;
+    text-align: center;
+    line-height: 5rem;
+    box-shadow: 10px 5px 5px var(--pink);
+}
+#current-nm, #current-hs{
+    padding: 10px;
+    background-color: var(--accent);
+    color: var(--pink);
+    font-style: bold;
+    font-size: 2.5rem;
+}
